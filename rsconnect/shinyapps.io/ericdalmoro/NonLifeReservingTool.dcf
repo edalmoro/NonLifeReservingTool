@@ -1,0 +1,12 @@
+name: NonLifeReservingTool
+title: NonLifeReservingTool
+username: ericdalmoro
+account: ericdalmoro
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 15066796
+bundleId: 10605250
+url: https://ericdalmoro.shinyapps.io/NonLifeReservingTool/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE

@@ -1,0 +1,630 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:"Yu Mincho";
+	panose-1:2 2 4 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"\@Yu Mincho";}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	font-size:11.0pt;
+	font-family:"Arial",sans-serif;}
+a:link, span.MsoHyperlink
+	{color:#0563C1;
+	text-decoration:underline;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	font-size:11.0pt;
+	font-family:"Arial",sans-serif;}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	font-size:11.0pt;
+	font-family:"Arial",sans-serif;}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	font-size:11.0pt;
+	font-family:"Arial",sans-serif;}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	font-size:11.0pt;
+	font-family:"Arial",sans-serif;}
+@page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+
+</head>
+
+<body lang=DE-CH link="#0563C1" vlink="#954F72" style='word-wrap:break-word'>
+
+<div class=WordSection1>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span lang=EN-US
+style='font-size:14.0pt'>Documentation for the Non-Life Reserving Tool</span></b></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><b><span lang=EN-US>Disclaimer</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>The information and tools provided in this application are for
+general informational purposes only. They are provided without any warranty,
+express or implied, including but not limited to the implied warranties of
+merchantability, fitness for a particular purpose, and non-infringement.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>The authors and contributors of this application make no
+representations or warranties of any kind, express or implied, about the
+completeness, accuracy, reliability, suitability, or availability with respect
+to the application or the information, products, services, or related graphics
+contained in the application for any purpose. Any reliance you place on such
+information is therefore strictly at your own risk.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>In no event will the authors or contributors be liable for any loss
+or damage, including without limitation, indirect or consequential loss or
+damage, or any loss or damage whatsoever arising from loss of data or profits
+arising out of, or in connection with, the use of this application.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>Through this application, you are able to link to other websites
+that are not under the control of the authors, and we have no control over the
+nature, content, and availability of those sites. The inclusion of any links
+does not necessarily imply a recommendation or endorse the views expressed
+within them.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>Every effort is made to keep the application up and running
+smoothly. However, the authors take no responsibility for, and will not be
+liable for, the application being temporarily unavailable due to technical
+issues beyond our control.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>By using this application, you agree to the terms of this
+disclaimer.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><b><span
+lang=EN-US>Input data</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:35.4pt'><b><span lang=EN-US>Triangle CSV file</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>Triangle data can be imported to the reserving tool. A SQL database
+will store the data. The SQL database is called "triangle_data.sqlite" and is
+saved in the same place where the overall R components of the application are
+saved on your computer.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>The triangle data should have the following structure:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-align:justify;text-justify:inter-ideograph;
+text-indent:-.25in'><span lang=EN-US style='font-family:Symbol'>*<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=EN-US>UWYDate: This is the date of the accident or underwriting year. As a
+standard, 1<sup>st</sup> January can be chosen for full accident year (e.g.
+1/1/2024 for accident year 2024).</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-align:justify;text-justify:
+inter-ideograph;text-indent:-.25in'><span lang=EN-US style='font-family:Symbol'>*<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=EN-US>DevDate: This the date of the development year. As a standard, 31<sup>st</sup>
+December can be chosen for full development year (e.g. 31/12/2024 for
+development year 2024).</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-align:justify;text-justify:
+inter-ideograph;text-indent:-.25in'><span lang=EN-US style='font-family:Symbol'>*<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=EN-US>AggClass: This can be used as the quarter on which the data is seen.
+As an example, "Q4 2024" would relate to the fourth quarter of 2024.</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-align:justify;text-justify:
+inter-ideograph;text-indent:-.25in'><span lang=EN-US style='font-family:Symbol'>*<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=EN-US>LoB: This is the Line of Business within a company. For example, "SCORCasualtyNP"
+would relate to the Non-Proportional Casualty line of business of SCOR.</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-align:justify;text-justify:
+inter-ideograph;text-indent:-.25in'><span lang=EN-US style='font-family:Symbol'>*<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=EN-US>DataType: DataType can be either "Incurred Claims" or "Paid Claims"</span></p>
+
+<p class=MsoListParagraphCxSpLast style='text-align:justify;text-justify:inter-ideograph;
+text-indent:-.25in'><span lang=EN-US style='font-family:Symbol'>*<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=EN-US>Value: This is the cumulative payment or incurred at development
+date for the selected underwriting or accident year.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>On clicking on the <b>button "Browse."</b>, you can choose the csv
+file which you want to import. Examples of CSV file for import are also provided
+with the application.</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-align:justify;text-justify:
+inter-ideograph'><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraphCxSpLast style='text-align:justify;text-justify:inter-ideograph'><b><span
+lang=PT-BR>Vector CSV file</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=PT-BR>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>Vector data can also be imported to the reserving tool and they will
+also be saved in the same SQL database.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>The vector data should have the following structure:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-align:justify;text-justify:inter-ideograph;
+text-indent:-.25in'><span lang=EN-US style='font-family:Symbol'>*<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=EN-US>UWYDate: Same as for triangle data</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-align:justify;text-justify:
+inter-ideograph;text-indent:-.25in'><span lang=EN-US style='font-family:Symbol'>*<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=EN-US>AggClass: Same as for triangle data</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-align:justify;text-justify:
+inter-ideograph;text-indent:-.25in'><span lang=EN-US style='font-family:Symbol'>*<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=EN-US>LoB: Same as for triangle data</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-align:justify;text-justify:
+inter-ideograph;text-indent:-.25in'><span lang=EN-US style='font-family:Symbol'>*<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=EN-US>DataType: DataType can be either "Premium" or "NbClaims" for the
+number of claims.</span></p>
+
+<p class=MsoListParagraphCxSpLast style='text-align:justify;text-justify:inter-ideograph;
+text-indent:-.25in'><span lang=EN-US style='font-family:Symbol'>*<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=EN-US>Value: This is the premium or number of claims for the selected
+underwriting or accident year.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>On clicking on the <b>button "Browse."</b>, you can choose the csv
+file which you want to import. Examples of CSV file for import are also
+provided with the application.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraphCxSpLast style='text-align:justify;text-justify:inter-ideograph'><b><span
+lang=PT-BR>Importing data</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>Once you have selected the CSV files you want to import, you can
+click on <b>the button "Import Data"</b>. If you import only triangle data, you
+will see the data being imported. After the import, you should restart the
+application.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>If you import both triangle data and vector data, it is important to
+make sure that UWYDate, AggClass and LoB cover the same intervals in both CSV
+files. Once the import is done, you should restart the application.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><b><span
+lang=EN-US>Retrieving loss data</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>After importing data in the reserving tool, it is possible to
+retrieve and see the imported data on pushing the <b>button "Retrieve LoB from
+database"</b>. After pushing this button, two drop-down lists appear allowing
+you to select the LoB and the AggClass within the SQL database among the
+imported data. Once you select LoB and AggClass, you can push the <b>button "Retrieve
+Reserving data"</b>. Four tabs are then created corresponding to Incurred
+claims, Paid claims, Premium and Number of claims. At this point, it is important
+to check and click on each tab to see your data (this also initiates the background
+variable corresponding to these 4 tabs. If you do not click on one of the tab,
+the background variables will not be initiated).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><b><span
+lang=EN-US>Excluding loss data points</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>In the tab "Incurred" triangle and "Paid" triangle, it is possible
+to exclude certain cells. Simply click on the cells you wish to exclude and
+click on the button "Exclude Selected Cells Inc" for incurred triangle or
+"Exclude Selected Cells Paid" for paid triangle. The projection methods will be
+adapted not to take into account the exclude cells.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><b><span
+lang=EN-US>Projecting loss data</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>The following projection methods are available:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-align:justify;text-justify:inter-ideograph;
+text-indent:-.25in'><span lang=EN-US style='font-family:Symbol'>*<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=EN-US>Chain-Ladder (paid and incurred)</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-align:justify;text-justify:
+inter-ideograph;text-indent:-.25in'><span lang=EN-US style='font-family:Symbol'>*<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=EN-US>Bornhuetter-Ferguson (incurred only)</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-align:justify;text-justify:
+inter-ideograph;text-indent:-.25in'><span lang=EN-US style='font-family:Symbol'>*<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=EN-US>GLM (paid and incurred)</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-align:justify;text-justify:
+inter-ideograph;text-indent:-.25in'><span lang=EN-US style='font-family:Symbol'>*<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=EN-US>Munich Chain-Ladder </span></p>
+
+<p class=MsoListParagraphCxSpLast style='text-align:justify;text-justify:inter-ideograph;
+text-indent:-.25in'><span lang=EN-US style='font-family:Symbol'>*<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=EN-US>Cape-Cod (incurred only).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>In the tab "Incurred" triangle or "Paid" triangle, just push the
+buttons corresponding to the chosen methods. A new tab will then appear
+corresponding to the projections. You can inspect the results in the relevant
+tab.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>As for the Bornhuetter-Ferguson method, the projection is done in 2
+steps:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='margin-left:39.0pt;text-align:justify;
+text-justify:inter-ideograph;text-indent:-.25in'><span lang=EN-US
+style='font-family:Symbol'>*<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>A first step consists in entering the ultimate
+loss ratios and coefficients of variation of the ultimates in the tab "BF
+Input". If you do not enter any figure, the ultimate loss ratios are selected
+as 100% and the coefficients of variation are selected as 10%.</span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-left:39.0pt;text-align:justify;
+text-justify:inter-ideograph;text-indent:-.25in'><span lang=EN-US
+style='font-family:Symbol'>*<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Once you have entered loss ratios and
+coefficients of variations, you can press the <b>button "Calculate BF Inc"</b>
+and a tab corresponding to the BF method will appear (tab "BF Inc").</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>The following statistics are available for each projection method:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-align:justify;text-justify:inter-ideograph;
+text-indent:-.25in'><span lang=EN-US style='font-family:Symbol'>*<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=EN-US>Chain-Ladder: </span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;text-align:justify;
+text-justify:inter-ideograph;text-indent:-.25in'><span lang=EN-US
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>Ultimate loss amounts</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;text-align:justify;
+text-justify:inter-ideograph;text-indent:-.25in'><span lang=EN-US
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>IBNRCum: IBNRs based on the ultimate loss
+amounts</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;text-align:justify;
+text-justify:inter-ideograph;text-indent:-.25in'><span lang=EN-US
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>Mack standard deviation and coefficient of
+variation: It is based on the Chain-Ladder R package and the paper of T. Mack
+(1993)</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;text-align:justify;
+text-justify:inter-ideograph;text-indent:-.25in'><span lang=EN-US
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>CDRCum: This is the Claim Development Result
+(one-year view) based on the Merz-Wuethrich method.</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;text-align:justify;
+text-justify:inter-ideograph;text-indent:-.25in'><span lang=EN-US
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>Skewness: This is based on the paper available
+under </span><a href="https://ssrn.com/abstract=2344297"><span lang=EN-US>https://ssrn.com/abstract=2344297</span></a></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-align:justify;text-justify:
+inter-ideograph;text-indent:-.25in'><span lang=EN-US style='font-family:Symbol'>*<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=EN-US>Bornhuetter-Ferguson:</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;text-align:justify;
+text-justify:inter-ideograph;text-indent:-.25in'><span lang=EN-US
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>Bf_Ult: Ultimate loss amounts</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;text-align:justify;
+text-justify:inter-ideograph;text-indent:-.25in'><span lang=EN-US
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>Bf_Res: IBNRs based on the ultimate loss amounts</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;text-align:justify;
+text-justify:inter-ideograph;text-indent:-.25in'><span lang=EN-US
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>msepRi: Mack standard deviation according to the
+the paper of T. Mack (2008)</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;text-align:justify;
+text-justify:inter-ideograph;text-indent:-.25in'><span lang=EN-US
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>Skew: This is the skewness based on the paper
+available under </span><a
+href="https://variancejournal.org/article/29442-the-skewness-of-bornhuetter-ferguson"><span
+lang=EN-US>https://variancejournal.org/article/29442-the-skewness-of-bornhuetter-ferguson</span></a></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-align:justify;text-justify:
+inter-ideograph;text-indent:-.25in'><span lang=EN-US style='font-family:Symbol'>*<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=EN-US>Munich Chain-Ladder:</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;text-align:justify;
+text-justify:inter-ideograph;text-indent:-.25in'><span lang=EN-US
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>The Paid and Incurred ultimates, the Paid and
+Incurred IBNRs as well as the ultimate P/I ratios are all based on the paper </span><a
+href="https://www.casact.org/sites/default/files/2021-07/Munich-Chain-Ladder-Quarg-Mack.pdf"><span
+lang=EN-US>https://www.casact.org/sites/default/files/2021-07/Munich-Chain-Ladder-Quarg-Mack.pdf</span></a></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-align:justify;text-justify:
+inter-ideograph;text-indent:-.25in'><span lang=EN-US style='font-family:Symbol'>*<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=EN-US>Cape-Cod:</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;text-align:justify;
+text-justify:inter-ideograph;text-indent:-.25in'><span lang=EN-US
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>CC_ult: Ultimate loss amounts</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;text-align:justify;
+text-justify:inter-ideograph;text-indent:-.25in'><span lang=EN-US
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>CC_Res: IBNRs based on the ultimate loss amounts</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;text-align:justify;
+text-justify:inter-ideograph;text-indent:-.25in'><span lang=EN-US
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>CC_MSEPi: Standard deviation based on the paper
+of Anina Saluz (2015) available in </span><a
+href="https://doc.rero.ch/record/300085/files/S1748499514000359.pdf"><span
+lang=EN-US>https://doc.rero.ch/record/300085/files/S1748499514000359.pdf</span></a></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;text-align:justify;
+text-justify:inter-ideograph;text-indent:-.25in'><span lang=EN-US
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>Skew: This is the skewness based on the paper
+available under </span><a
+href="https://variancejournal.org/article/37897-the-skewness-of-cape-cod-in-a-distribution-free-model"><span
+lang=EN-US>https://variancejournal.org/article/37897-the-skewness-of-cape-cod-in-a-distribution-free-model</span></a></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-align:justify;text-justify:
+inter-ideograph;text-indent:-.25in'><span lang=EN-US style='font-family:Symbol'>*<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=EN-US>GLM:</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;text-align:justify;
+text-justify:inter-ideograph;text-indent:-.25in'><span lang=EN-US
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>Ultimate loss amounts and IBNRs are provided</span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-left:1.0in;text-align:justify;
+text-justify:inter-ideograph;text-indent:-.25in'><span lang=EN-US
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>For each modality of each variable the test of
+goodness-of-fit is also provided to see if the GLM model has a good fit to the
+underlying data.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>Once the different projection methods are run, it is possible to
+make a final selection of ultimates. For this purpose, press the <b>button "Final
+Selection"</b> in the tab "Incurred". A new tab will appear called "Final
+Selection". In this tab, for each accident or underwriting year, it will be
+possible to select your preferred projection method. Two tables are available
+to help with the selections:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='margin-left:39.0pt;text-align:justify;
+text-justify:inter-ideograph;text-indent:-.25in'><span lang=EN-US
+style='font-family:Symbol'>*<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>A table which provides the overall Ultimate loss
+amounts and the sum over all accident or underwriting years,</span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-left:39.0pt;text-align:justify;
+text-justify:inter-ideograph;text-indent:-.25in'><span lang=EN-US
+style='font-family:Symbol'>*<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>A table with the Coefficients of Variation per
+accident or underwriting year and the total Coefficient of Variation. On
+selecting different methods, the overall Coefficient of Variation is
+automatically recalculated based on a correlation matrix of the
+accident/underwriting years between each other. It may differ from the overall
+Coefficient of Variation that is calculated for the different methods
+(Chain-Ladder, BF, Cape-Cod, GLM),</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><b><span
+lang=EN-US>Version management</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>Once you have selected the methods for each accident/underwriting
+year, you can save the resulting version of the reserving projections on
+clicking on the <b>button "save results"</b>. This only saves the triangles including
+the exclusions done in the Incurred and Paid tabs, the Coefficients of
+Variations and Ultimate loss ratios selected for the Bornhuetter-Ferguson
+method (incurred) and the final selected projection methods. </span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>You can recover a version on clicking the <b>button "Retrieve
+Results"</b>. A tab called "Version retrieval" is then created and, when
+selecting the desired version, the triangles, Bornhuetter-Ferguson and
+Selections are then retrieved and shown in different tables.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>Finally, you can also delete a version on clicking on the <b>button
+"Delete Version"</b>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><b><span
+lang=EN-US>Create Excel Sheets</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>Also, after selecting the projection methods for each
+accident/underwriting year, it is possible to export all the created tabs in
+excel. After pushing the <b>button "Create Excel Sheets"</b>, an excel workbook
+called "tables.xlsx" is created in the folder where the R application is saved.
+All tabs are saved.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>Starting a new projection module</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>It is always possible to restart the application on clicking the <b>button
+"Delete all tabs"</b>. All tabs (except the Help tab) will be deleted.</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraphCxSpLast style='text-align:justify;text-justify:inter-ideograph'><span
+lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>
