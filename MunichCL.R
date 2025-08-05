@@ -24,9 +24,25 @@ observeEvent(input[[paste0("valeursOutputMunich_", dataset_name)]], {
 
       Munich<-MunichChainLadder(TRPaid_fr, TRInc_triangle, est.sigmaP = "Mack", est.sigmaI = "Mack")
 
+      a<-MackChainLadder(TRPaid_fr)
+      sigmapaid<-a$sigma*(1+Munich$lambdaP$coefficients)
+      sigmapaid[length(sigmapaid)]<-0
+      
+      b<-MackChainLadder(TRInc_triangle)
+      sigmaincurred<-b$sigma*(1+Munich$lambdaI$coefficients)
+      sigmaincurred[length(sigmaincurred)]<-0
+      
+      c<-MackChainLadder1(Triangle1=Munich,est.sigma=sigmapaid,type="paid")
+      
+      d<-MackChainLadder1(Triangle1=Munich,est.sigma=sigmaincurred,type="incurred")
+      
       UltimatePaid<-summary(Munich)$ByOrigin["Ult. Paid"]
       SumUltPaid<-sum(UltimatePaid)
       UltPaid<-rbind(UltimatePaid,Total=SumUltPaid)
+      
+      VolatPaidInt <- c$Mack.S.E
+      TotVolatPaid <- c$Total.Mack.S.E
+      VolatPaid<-c(VolatPaidInt,Total=TotVolatPaid)
       
       LatestPaid<-summary(Munich)$ByOrigin["Latest Paid"]
       SumLatPaid<-sum(LatestPaid)
@@ -35,6 +51,10 @@ observeEvent(input[[paste0("valeursOutputMunich_", dataset_name)]], {
       UltimateInc<-summary(Munich)$ByOrigin["Ult. Incurred"]
       SumUltiInc<-sum(UltimateInc)
       UltInc<-rbind(UltimateInc,Total=SumUltiInc)
+      
+      VolatIncInt <- d$Mack.S.E
+      TotVolatInc <- d$Total.Mack.S.E
+      VolatInc<-c(VolatIncInt,Total=TotVolatInc)
       
       LatestInc<-summary(Munich)$ByOrigin["Latest Incurred"]
       SumLatInc<-sum(LatestInc)
@@ -49,7 +69,7 @@ observeEvent(input[[paste0("valeursOutputMunich_", dataset_name)]], {
       IBNRIncurred<-UltInc-LatInc
       colnames(IBNRIncurred)<-"IBNR Inc."
         
-      Munich_res<-cbind(UltPaid, LatPaid, UltInc, LatInc, UltiPI)
+      Munich_res<-cbind(UltPaid, VolatPaid, LatPaid, UltInc, VolatInc, LatInc, UltiPI)
       Munich_res<-cbind(Munich_res, IBNRPaid, IBNRIncurred)
       
       

@@ -57,9 +57,9 @@ observeEvent(input[[paste0("valeursOutputSelec_", dataset_name)]], {
       
       if ('Munich_res' %in% names(valeurs)) { 
         NbMethod<-NbMethod+1
-        MethodName<-c(MethodName,"Munich CL")
-        IntermMCL<-cbind(rownames(valeurs$Munich_res),valeurs$Munich_res$`Ult. Incurred`)
-        colnames(IntermMCL) <- c("annee", "UltMCL")
+        MethodName<-c(MethodName,"Munich CL","CoV MCL")
+        IntermMCL<-cbind(rownames(valeurs$Munich_res),valeurs$Munich_res$`Ult. Incurred`,valeurs$Munich_res$VolatInc/(valeurs$Munich_res$`Ult. Incurred`-valeurs$Munich_res$`Latest Incurred`))
+        colnames(IntermMCL) <- c("annee", "UltMCL","CoVMCL")
         IntermMCL<-as.data.frame(IntermMCL)
         row_index <- which(IntermMCL$annee == "Total")
         column_index <- "annee"
@@ -208,13 +208,13 @@ observeEvent(input[[paste0("valeursOutputSelec_", dataset_name)]], {
           accidentYear <- ultimates$annee[i]
           selected_method <- input[[paste0("methodSelect_", accidentYear)]]
           
-          if (selected_method != "Munich CL") {
+ #         if (selected_method != "Munich CL") {
             current_index <- which(names(ultimates) == selected_method)
             ultimates[i, (current_index+1)]
-          }
-           else {
-             0
-           }
+#          }
+#           else {
+#             0
+#           }
         
         })
         
